@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solicitudJuego</title>
+    <link rel="stylesheet" href="styleSolicitud.css">
+    <style>
+        /* Estilo para separar los campos del formulario */
+        .form-group {
+            margin-bottom: 10px; /* Agrega un margen inferior de 10px entre los campos */
+        }
+
+        /* Estilo para hacer más grandes los títulos */
+        .form-label {
+            font-size: 15px; /* Tamaño de fuente personalizado para los títulos */
+            display: block;
+        }
+
+        /* Estilo para hacer más grandes los cuadros de texto */
+        .form-control {
+            width: 100%; /* Ancho al 100% del contenedor */
+        }
+
+        /* Estilo para el botón */
+        .btn-primary {
+            background-color: white; /* Fondo blanco */
+            color: #000; /* Texto negro */
+            transition: background-color 0.3s; /* Transición suave del color de fondo */
+        }
+
+        .btn-primary:hover {
+            background-color: #000; /* Cambia a fondo negro al pasar el cursor por encima */
+            color: white; /* Texto blanco cuando el cursor está encima */
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="header">
+        <a href="#" class="logo">  COLEGIATURA INGES </a>
+
+        <nav class="navbar">
+            <a href="Listar.html">Inicio</a>
+            <a href="solicitudJuego.html">GENERAR SOLICITRD</a>
+        </nav>
+
+        <div class="icons">
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="user-dropdown" class="user-dropdown">
+                <a href="#">Mi Perfil</a>
+                <a href="PaginaInicio.html" id="logout-btn">Cerrar Sesión</a>
+            </div>
+        </div>
+        
+        <script>
+            const userBtn = document.getElementById("user-btn");
+            const userDropdown = document.getElementById("user-dropdown");
+            const logoutBtn = document.getElementById("logout-btn");
+        
+            // Mostrar/ocultar el menú desplegable al hacer clic en el icono del usuario
+            userBtn.addEventListener("click", () => {
+                userDropdown.classList.toggle("active");
+            });
+        
+            // Cerrar la sesión al hacer clic en "Cerrar Sesión"
+            logoutBtn.addEventListener("click", () => {
+                // Agrega aquí la lógica para cerrar la sesión, por ejemplo, redirigiendo a la página de inicio de sesión.
+                alert("Cerrando sesión..."); // Puedes reemplazar esto con tu lógica real.
+            });
+        
+            // Cierra el menú desplegable al hacer clic en cualquier otro lugar de la página
+            document.addEventListener("click", (event) => {
+                if (event.target !== userBtn && !userDropdown.contains(event.target)) {
+                    userDropdown.classList.remove("active");
+                }
+            });
+           
+        </script>
+        
+        
+        
+    </header>
+    <main>
+        <section class="game-info">
+            <h2>SOLICITAR </h2>
+            <br>
+            <form id="gameForm" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="dni" class="form-label">DNI:<span class="required-field">*</span></label>
+                    <input type="text" class="form-control" id="dni" maxlength="8" name="dni" placeholder="Ingrese su número de DNI" pattern="[0-8]+" required>
+                    <div class="invalid-feedback">Ingrese solo números en este campo.</div>
+                </div>
+                <div class="form-group">
+                    <label for="nombres" class="form-label">Nombres:<span class="required-field">*</span></label>
+                    <input type="text" class="form-control" id="nombres" maxlength="30" name="nombres" placeholder="Ingrese sus nombres" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                    title="Solo se permiten letras y espacios" required>
+                    <div class="invalid-feedback">Ingrese solo letras y espacios en este campo.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellidos" class="form-label">Apellidos:<span class="required-field">*</span></label>
+                    <input type="text" class="form-control" id="apellidos" maxlength="30" name="apellidos" placeholder="Ingrese sus apellidos" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                    title="Solo se permiten letras y espacios" required>
+                    <div class="invalid-feedback">Ingrese solo letras y espacios en este campo.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo" class="form-label">Correo electrónico:<span class="required-field">*</span></label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
+                    <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adjuntoTitulo" class="form-label">Adjuntar título profesional (imagen):<span class="required-field">*</span></label>
+                    <input type="file" class="form-control" id="adjuntoTitulo" name="adjuntoTitulo" accept=".jpg, .jpeg, .png" required>
+                    <small class="form-text text-muted">Formatos permitidos: JPG, JPEG, PNG.</small>
+                    <div class="invalid-feedback">Por favor, adjunte su título profesional como imagen.</div>
+                </div>
+                
+    
+                <button type="submit" class="btn btn-primary" id="submitBtn">enviar Solicitud</button>
+            </form>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const categoryContainer = document.getElementById("categoryContainer");
+                const selectedCategories = document.getElementById("selectedCategories");
+                const submitBtn = document.getElementById("submitBtn");
+        
+                function updateSelectedCategories(event) {
+                    const selectedCategory = event.target;
+                    if (selectedCategory.classList.contains("category")) {
+                        selectedCategory.classList.toggle("selected");
+                    }
+        
+                    const selectedCategoryElements = categoryContainer.querySelectorAll(".selected");
+                    const selectedCategoryNames = [...selectedCategoryElements].map(element => element.getAttribute("data-value"));
+                    selectedCategories.textContent = "Categorías seleccionadas: " + selectedCategoryNames.join(", ");
+                }
+        
+                // Verifica si hay categorías antes de asignar el evento
+                const categoryElements = categoryContainer.getElementsByClassName("category");
+                if (categoryElements.length > 0) {
+                    categoryContainer.addEventListener("click", updateSelectedCategories);
+                }
+        
+                // Agrega un evento click al botón de enviar
+                submitBtn.addEventListener("click", function (event) {
+                    const selectedCategoryElements = categoryContainer.querySelectorAll(".selected");
+                    if (selectedCategoryElements.length === 0) {
+                        alert("Debes seleccionar al menos una categoría antes de subir el juego.");
+                        event.preventDefault(); // Evita que el formulario se envíe
+                    }
+                });
+            });
+        </script>
+        
+    </main>
+
+</body>
+
+</html>

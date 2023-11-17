@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleInicio.css">
+    <link rel="stylesheet" href="styleLogin.css"> <!-- Nueva línea para el CSS del formulario de inicio de sesión -->
+    <title>Inicio de Sesión</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo"> COLEGIATURA INGES.</a>
+
+        <nav class="navbar">
+            <a href="Listar.html">Inicio</a>
+        </nav>
+
+        <div class="icons">
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="user-dropdown" class="user-dropdown">
+                <a href="#">Mi Perfil</a>
+                <a href="#" id="logout-btn">Cerrar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nuevo formulario de inicio de sesión -->
+    <div class="login-container">
+        <form class="login-form" action="#" method="post">
+            <h2>Iniciar Sesión</h2>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" placeholder="Ingrese su DNI" required maxlength="8" pattern="\d*">
+            <!-- La expresión regular \d* permite solo dígitos -->
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+
+
+
+    <script>
+        // ... (el resto de tu script JavaScript)
+    </script>
+
+</body>
+
+</html>
+
+<script>
+    const userBtn = document.getElementById("user-btn");
+    const userDropdown = document.getElementById("user-dropdown");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    // Mostrar/ocultar el menú desplegable al hacer clic en el icono del usuario
+    userBtn.addEventListener("click", () => {
+        userDropdown.classList.toggle("active");
+    });
+
+    // Cerrar la sesión al hacer clic en "Cerrar Sesión"
+    logoutBtn.addEventListener("click", () => {
+        // Agrega aquí la lógica para cerrar la sesión, por ejemplo, redirigiendo a la página de inicio de sesión.
+        alert("Cerrando sesión..."); // Puedes reemplazar esto con tu lógica real.
+    });
+
+    // Cierra el menú desplegable al hacer clic en cualquier otro lugar de la página
+    document.addEventListener("click", (event) => {
+        if (event.target !== userBtn && !userDropdown.contains(event.target)) {
+            userDropdown.classList.remove("active");
+        }
+    });
+    
+
+</script>

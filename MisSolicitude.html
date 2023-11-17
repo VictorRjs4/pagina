@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solicitudJuego</title>
+    <link rel="stylesheet" href="styleSolicitud.css">
+    <style>
+        /* Estilo para separar los campos del formulario */
+        .form-group {
+            margin-bottom: 10px; /* Agrega un margen inferior de 10px entre los campos */
+        }
+
+        /* Estilo para hacer más grandes los títulos */
+        .form-label {
+            font-size: 15px; /* Tamaño de fuente personalizado para los títulos */
+            display: block;
+        }
+
+        /* Estilo para hacer más grandes los cuadros de texto */
+        .form-control {
+            width: 100%; /* Ancho al 100% del contenedor */
+        }
+
+        /* Estilo para el botón */
+        .btn-primary {
+            background-color: white; /* Fondo blanco */
+            color: #000; /* Texto negro */
+            transition: background-color 0.3s; /* Transición suave del color de fondo */
+        }
+
+        .btn-primary:hover {
+            background-color: #000; /* Cambia a fondo negro al pasar el cursor por encima */
+            color: white; /* Texto blanco cuando el cursor está encima */
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="header">
+        <a href="#" class="logo">  COLEGIATURA INGES </a>
+
+        <nav class="navbar">
+            <a href="Listar.html">Inicio</a>
+            <a href="solicitudJuego.html">GENERAR SOLICITRD</a>
+        </nav>
+
+        <div class="icons">
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="user-dropdown" class="user-dropdown">
+                <a href="#">Mi Perfil</a>
+                <a href="PaginaInicio.html" id="logout-btn">Cerrar Sesión</a>
+            </div>
+        </div>
+        
+        <script>
+            const userBtn = document.getElementById("user-btn");
+            const userDropdown = document.getElementById("user-dropdown");
+            const logoutBtn = document.getElementById("logout-btn");
+        
+            // Mostrar/ocultar el menú desplegable al hacer clic en el icono del usuario
+            userBtn.addEventListener("click", () => {
+                userDropdown.classList.toggle("active");
+            });
+        
+            // Cerrar la sesión al hacer clic en "Cerrar Sesión"
+            logoutBtn.addEventListener("click", () => {
+                // Agrega aquí la lógica para cerrar la sesión, por ejemplo, redirigiendo a la página de inicio de sesión.
+                alert("Cerrando sesión..."); // Puedes reemplazar esto con tu lógica real.
+            });
+        
+            // Cierra el menú desplegable al hacer clic en cualquier otro lugar de la página
+            document.addEventListener("click", (event) => {
+                if (event.target !== userBtn && !userDropdown.contains(event.target)) {
+                    userDropdown.classList.remove("active");
+                }
+            });
+           
+        </script>
+        
+        <style>
+            /* Agrega estilos CSS aquí */
+            .pending-status {
+                color: #ff0000; /* Color naranja */
+                font-weight: bold;
+                margin-left: 10px;
+            }
+            .approved-status {
+            color: #008000; /* Color verde */
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .invalid-image {
+            color: #ff0000; /* Color rojo */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        </style>
+    </header>
+
+    <main>
+        
+            <section class="game-info">
+                
+                <form id="gameForm">
+                    <h2>Solicitud 1</h2>
+                    <!-- Agrega el estado "En Pendiente" al lado de la solicitud -->
+                    <p>
+                        Estado: <span class="pending-status">En Observacion</span>
+                    </p>
+                    <ul>
+                        <li><a href="editarSoli.html">Revisar Solicitud</a></li>
+                        <!-- Agrega más solicitudes según sea necesario -->
+                    </ul>  
+                    <p class="invalid-image">Por corregir :La imagen no se aprecia correctamente. Por favor, corríjala.</p>
+                    <div class="form-group">
+                    <label for="adjuntoTitulo" class="form-label">Adjuntar título profesional (imagen):<span class="required-field">*</span></label>
+                    <input type="file" class="form-control" id="adjuntoTitulo" name="adjuntoTitulo" accept=".jpg, .jpeg, .png" required>
+                    <small class="form-text text-muted">Formatos permitidos: JPG, JPEG, PNG.</small>
+                    <div class="invalid-feedback">Por favor, adjunte su título profesional como imagen.</div>
+                    
+                    
+                </div>
+                </form>
+        </section>
+        </section>
+      
+    </main>
+</body>
+
+</html>
